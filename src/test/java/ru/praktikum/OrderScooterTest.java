@@ -24,7 +24,7 @@ public class OrderScooterTest {
     private static final String PHONE = "88005553535";
     private static final String DATE = "10.09.2023";
 
-    private By orderButton;
+    private final By orderButton;
 
     public OrderScooterTest(By orderButton) {
         this.orderButton = orderButton;
@@ -48,7 +48,7 @@ public class OrderScooterTest {
                 .clickOnCookieButton();
 
         OrderPage orderPage = mainPage.clickOnOrderButton(orderButton);
-        orderPage.waitForDisplayingFields()
+        orderPage.waitForDisplayingNameField()
                 .enterValueInNameField(NAME)
                 .enterValueInSurnameField(SURNAME)
                 .pickStationInMetroField()
@@ -60,6 +60,5 @@ public class OrderScooterTest {
                 .clickOnOrderButton()
                 .clickOnYesButton()
                 .waitForOrderCreatedLabel();
-
     }
 }

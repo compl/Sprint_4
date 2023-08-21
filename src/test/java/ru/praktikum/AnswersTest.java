@@ -11,9 +11,9 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class AnswersTest {
 
-    private By question;
-    private By answer;
-    private String result;
+    private final By question;
+    private final By answer;
+    private final String result;
 
     public AnswersTest(By question, By answer, String result) {
         this.question = question;
@@ -28,7 +28,7 @@ public class AnswersTest {
     public static Object[][] getOptions() {
         return new Object[][] {
                 { MainPage.firstQuestion, MainPage.firstAnswer, "Сутки — 400 рублей. Оплата курьеру — наличными или картой." },
-                { MainPage.secondQuestion, MainPage.secondAnswer, "Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим." }
+                { MainPage.fourthQuestion, MainPage.fourthAnswer, "Только начиная с завтрашнего дня. Но скоро станем расторопнее." }
         };
     }
 
@@ -37,8 +37,8 @@ public class AnswersTest {
         MainPage mainPage = new MainPage(driverRule.getDriver());
         mainPage.open()
                 .clickOnCookieButton()
-                .clickOnQuestion(question);
+                .clickOnQuestion(question)
+                .waitForDisplayingFields(answer);
         assertEquals("Текст не совпадает", result, driverRule.getDriver().findElement(answer).getText());
     }
-
 }

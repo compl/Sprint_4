@@ -1,6 +1,8 @@
 package ru.praktikum;
 
 import org.junit.rules.ExternalResource;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
@@ -23,7 +25,7 @@ public class DriverRule extends ExternalResource {
         else
             setUpChrome();
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().window().maximize();
     }
 
     public void setUpFirefox() {

@@ -12,25 +12,38 @@ public class OrderPage {
 
     private final WebDriver driver;
 
+    //Поле Имя
     private static final By nameField = By.cssSelector("[placeholder = '* Имя']");
+    //Поле Фамилия
     private static final By surnameField = By.cssSelector("[placeholder = '* Фамилия']");
+    //Дропдаун выбора станции метро
     private static final By metroDropdown = By.cssSelector("[placeholder = '* Станция метро']");
-    private static final By metroStationSokolnikiOption = By.xpath(".//ul[@class='select-search__options']/li[9]/button");
+    //Станция метро Лубянка в дропдауне
+    private static final By metroStationLubyankaOption = By.xpath(".//ul[@class='select-search__options']/li[9]/button");
+    //Поле Адрес
     private static final By addressField = By.cssSelector("[placeholder = '* Адрес: куда привезти заказ']");
+    //Поле Телефон
     private static final By phoneField = By.cssSelector("[placeholder = '* Телефон: на него позвонит курьер']");
+    //Кнопка Далее
     private static final By nextButton = By.className("Button_Middle__1CSJM");
+    //Поле выбора даты доставки
     private static final By deliveryDateField = By.cssSelector("[placeholder = '* Когда привезти самокат']");
+    //Дропдаун выбора срока аренды
     private static final By rentalDurationDropdown = By.xpath(".//div[text()='* Срок аренды']");
+    //Двое суток в дропдауне
     private static final By twoDaysDurationOption = By.xpath(".//div[text()='двое суток']");
+    //Кнопка Заказать
     private static final By orderButton = By.xpath(".//div[@class='Order_Buttons__1xGrp']/button[text()='Заказать']");
+    //Кнопка Да на форме подтверждения заказа
     private static final By yesButton = By.xpath(".//button[text()='Да']");
+    //Текст Заказ оформлен
     private static final By orderCreatedLabel = By.xpath(".//div[text()='Заказ оформлен']");
 
     public OrderPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public OrderPage waitForDisplayingFields() {
+    public OrderPage waitForDisplayingNameField() {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(nameField));
         return this;
@@ -48,7 +61,7 @@ public class OrderPage {
 
     public OrderPage pickStationInMetroField() {
         driver.findElement(metroDropdown).click();
-        driver.findElement(metroStationSokolnikiOption).click();
+        driver.findElement(metroStationLubyankaOption).click();
         return this;
     }
 
