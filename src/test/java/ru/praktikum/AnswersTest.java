@@ -11,8 +11,6 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class AnswersTest {
 
-    private static final String NAME = "Илон";
-
     private By question;
     private By answer;
     private String result;
